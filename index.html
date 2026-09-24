@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameVault - Catálogo de Videojuegos (Proyecto 2º SMR)</title>
+
+  <!-- Google Fonts para tipografía gaming -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER / NAVEGACIÓN -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#inicio" class="logo">
+        <span class="logo-icon">🎮</span>
+        Game<span class="highlight">Vault</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="#inicio" class="nav-link">Inicio</a>
+        <a href="#catalogo" class="nav-link">Catálogo</a>
+        <a href="#nosotros" class="nav-link">Sobre Nosotros</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SECCIÓN HERO -->
+  <section id="inicio" class="hero">
+    <div class="hero-content">
+      <span class="badge-smr">Proyecto Educativo 2.º SMR</span>
+      <h1>Explora tu próximo <span class="text-gradient">videojuego</span></h1>
+      <p>Bienvenido a GameVault, un catálogo interactivo desarrollado como proyecto práctico para el ciclo de Sistemas Microinformáticos y Redes. Encuentra y filtra tus juegos favoritos fácilmente.</p>
+      <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CATÁLOGO -->
+  <section id="catalogo" class="catalog-section">
+    <div class="container">
+      
+      <div class="section-header">
+        <h2>Catálogo de Videojuegos</h2>
+        <p class="subtitle">Usa el buscador y los filtros para encontrar títulos específicos</p>
+      </div>
+
+      <!-- BARRA DE BÚSQUEDA Y FILTROS -->
+      <div class="controls-card">
+        
+        <!-- Buscador principal -->
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" placeholder="Buscar videojuego por nombre..." autocomplete="off">
+        </div>
+
+        <!-- Filtros secundarios -->
+        <div class="filters-grid">
+          
+          <!-- Filtro por Género -->
+          <div class="filter-group">
+            <label for="genre-filter">Género:</label>
+            <select id="genre-filter">
+              <option value="todos">Todos los géneros</option>
+              <option value="Acción">Acción / Aventura</option>
+              <option value="RPG">RPG / Rol</option>
+              <option value="Sandbox">Sandbox</option>
+              <option value="Battle Royale">Battle Royale</option>
+              <option value="Deportes">Deportes</option>
+              <option value="Supervivencia">Supervivencia</option>
+            </select>
+          </div>
+
+          <!-- Filtro por Plataforma -->
+          <div class="filter-group">
+            <label for="platform-filter">Plataforma:</label>
+            <select id="platform-filter">
+              <option value="todas">Todas las plataformas</option>
+              <option value="PC">PC</option>
+              <option value="PS5">PlayStation 5</option>
+              <option value="Xbox">Xbox Series X|S</option>
+              <option value="Switch">Nintendo Switch</option>
+            </select>
+          </div>
+
+          <!-- Ordenar por -->
+          <div class="filter-group">
+            <label for="sort-select">Ordenar por:</label>
+            <select id="sort-select">
+              <option value="default">Por defecto</option>
+              <option value="name-asc">Nombre (A - Z)</option>
+              <option value="name-desc">Nombre (Z - A)</option>
+              <option value="price-asc">Precio (Menor a Mayor)</option>
+              <option value="price-desc">Precio (Mayor a Menor)</option>
+              <option value="year-desc">Año (Más reciente)</option>
+            </select>
+          </div>
+
+          <!-- Botón Limpiar Filtros -->
+          <div class="filter-group reset-group">
+            <button id="reset-btn" class="btn btn-secondary">🔄 Limpiar filtros</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CONTADOR DE RESULTADOS -->
+      <div class="results-bar">
+        <span id="results-count">Cargando catálogo...</span>
+      </div>
+
+      <!-- REJILLA DE TARJETAS DE VIDEOJUEGOS -->
+      <div id="games-grid" class="games-grid">
+        <!-- Las tarjetas se generan dinámicamente mediante JavaScript -->
+      </div>
+
+      <!-- MENSAJE DE NO RESULTADOS -->
+      <div id="no-results" class="no-results hidden">
+        <span class="no-results-icon">👾</span>
+        <h3>No se encontraron videojuegos</h3>
+        <p>Intenta ajustar o limpiar los filtros de búsqueda.</p>
+        <button class="btn btn-primary" onclick="resetFilters()">Restablecer búsqueda</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN SOBRE NOSOTROS -->
+  <section id="nosotros" class="about-section">
+    <div class="container">
+      <div class="about-card">
+        <h3>Acerca del Proyecto GameVault</h3>
+        <p>Este proyecto ha sido desarrollado como trabajo de aula para el 2.º curso del Grado Medio de <strong>Sistemas Microinformáticos y Redes (SMR)</strong>.</p>
+        <div class="about-features">
+          <div class="feature-item">
+            <span class="feature-icon">⚡</span>
+            <h4>Sin Backend</h4>
+            <p>100% estático, procesado directamente en el cliente mediante JavaScript Vanilla.</p>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">📱</span>
+            <h4>Responsive</h4>
+            <p>Adaptado perfectamente a pantallas de ordenadores, tablets y teléfonos móviles.</p>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🚀</span>
+            <h4>Despliegue Listo</h4>
+            <p>Estructurado idealmente para alojarse en GitHub y servirse mediante Vercel.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DE DETALLES DEL VIDEOJUEGO -->
+  <div id="modal" class="modal-overlay hidden">
+    <div class="modal-container">
+      <button id="modal-close" class="modal-close" aria-label="Cerrar modal">&times;</button>
+      
+      <div class="modal-content">
+        <div class="modal-image-container">
+          <img id="modal-img" src="" alt="Portada del videojuego">
+        </div>
+        
+        <div class="modal-info">
+          <span id="modal-genre" class="badge">Género</span>
+          <h2 id="modal-title">Título del Juego</h2>
+          <p id="modal-description" class="modal-desc">Descripción detallada del videojuego.</p>
+          
+          <div class="modal-details-grid">
+            <div class="detail-item">
+              <span class="detail-label">Plataformas:</span>
+              <span id="modal-platforms" class="detail-value">-</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Año de lanzamiento:</span>
+              <span id="modal-year" class="detail-value">-</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Precio aproximado:</span>
+              <span id="modal-price" class="detail-value price-tag">-</span>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button class="btn btn-primary" onclick="closeModal()">Cerrar detalles</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <h3>🎮 GameVault</h3>
+        <p>Proyecto pedagógico para 2.º SMR</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+        <a href="#inicio">Inicio</a>
+        <a href="#catalogo">Catálogo</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 GameVault. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT JS -->
+  <script src="script.js"></script>
+</body>
+</html>
